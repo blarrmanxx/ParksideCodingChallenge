@@ -1,0 +1,89 @@
+<div ng-controller="compContr" ng-init="location='Graz';teamname1='Reals';teamname2='Suu'">
+  <h1>Currently available competitions</h1>
+  <div class="newCompetition">
+    <form method="post">
+      <label for="location">Location: </label>
+      <input type="text" name="location" id="location" value="" ng-model="location" size=5>
+      <label for="teamname1">1st team: </label>
+      <input type="text" name="teamname1" id="teamname1" value="" ng-model="teamname1" size=5>
+      <label for="teamname2">2nd team: </label>
+      <input type="text" name="teamname2" id="teamname2" value="" ng-model="teamname2" size=5>
+      <input type="submit" name="submit" value="Create" ng-click="addComp(location,teamname1,teamname2)" size=5>
+    </form>
+  </div>
+
+  <div class="competitions">
+    <p ng-show="compArray.length == 0">There is no competition available.</p>
+    <table ng-show="compArray.length != 0">
+      <tr ng-repeat="x in compArray">
+        <td class="competitions"><p>{{x.location}}</p></td>
+        <td class="competitions">
+          <details close>
+            <summary>{{x.team1.teamname}}</summary>
+            <div class="robot" ng-repeat="r in x.team1.members">
+              <p><img src="{{r.avatar}}" alt="Image of robot" style="width:100px; height:100px; float:left">
+              Name: {{r.name}}<br>
+              Powermove: {{r.powermove}}<br>
+              Experience: {{r.experience}}<br>
+              Out of order: {{r.outOfOrder}}<br><br></p>
+            </div>
+          </details>
+        </td>
+        <td class="competitions"><p>vs.</p></td>
+        <td class="competitions">
+          <details close>
+            <summary>{{x.team2.teamname}}</summary>
+            <div class="robot" ng-repeat="r in x.team2.members">
+              <p><img src="{{r.avatar}}" alt="Image of robot" style="width:100px; height:100px; float:left">
+              Name: {{r.name}}<br>
+              Powermove: {{r.powermove}}<br>
+              Experience: {{r.experience}}<br>
+              Out of order: {{r.outOfOrder}}<br><br></p>
+            </div>
+          </details>
+        </td>
+        <td><input type="button" name="startcomp" value="Start competition" ng-click="startComp($index)")></td>
+      </tr>
+    </table>
+  </div>
+
+  <br><br><br>
+
+  <div class="currCompetition" id="currcomp">
+    <h1>Current competition</h1>
+    <p ng-show="!currcomp.location">There is currently no competition ongoing.</p>
+    <table class="noborder" ng-show="iscomp">
+      <tr ng-repeat="i in [0,1,2,3,4]">
+        <td class="currCompetition">
+          <div class="robot" style="float:left; width:100%;">
+            <p><img src="{{currcomp.team1.members[i].avatar}}" alt="Image of robot" style="width:100px; height:100px; float:left">
+            Name: {{currcomp.team1.members[i].name}}<br>
+            Powermove: {{currcomp.team1.members[i].powermove}}<br>
+            Experience: {{currcomp.team1.members[i].experience}}<br>
+            Out of order: {{currcomp.team1.members[i].outOfOrder}}<br><br></p>
+          </div>
+        </td>
+        <td class="currCompetition"><h1>vs.</h1></td>
+        <td class="currCompetition">
+          <div class="robot" style="float:right; width:100%;">
+            <p><img src="{{currcomp.team2.members[i].avatar}}" alt="Image of robot" style="width:100px; height:100px; float:left">
+            Name: {{currcomp.team2.members[i].name}}<br>
+            Powermove: {{currcomp.team2.members[i].powermove}}<br>
+            Experience: {{currcomp.team2.members[i].experience}}<br>
+            Out of order: {{currcomp.team2.members[i].outOfOrder}}<br><br></p>
+          </div>
+        </td>
+        <td class="currCompetition">
+          <div ng-show="currcomp.winners[i]==0">
+            <h3>Winner: {{currcomp.team1.members[i].name}}</h3>
+            <img src="{{currcomp.team1.members[i].avatar}}" alt="Image of robot" style="width:100px; height:100px; float:left">
+          </div>
+          <div ng-show="currcomp.winners[i]==1">
+            <h3>Winner: {{currcomp.team2.members[i].name}}</h3>
+            <img src="{{currcomp.team2.members[i].avatar}}" alt="Image of robot" style="width:100px; height:100px; float:left">
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div ng-controller="leadContr">
+  <h1>Leaderboard (of previous 100 danceoffs)</h1>
+  <table ng-show="robot_results.length != 0">
+    <th></th>
+    <th>Robot</th>
+    <th ng-click="orderBy('-wins')"><u>Wins</u></th>
+    <th ng-click="orderBy('-losses')"><u>Losses</u></th>
+    <tr ng-repeat="x in robot_results | orderBy : order_by">
+      <td class="currCompetition"><img src="{{x.rob.avatar}}" alt="Image of robot" style="width:35px; height:35px; float:left"></td>
+      <td class="currCompetition">{{x.rob.name}}</td>
+      <td class="currCompetition">{{x.wins}}</td>
+      <td class="currCompetition">{{x.losses}}</td>
+    </tr>
+  </table>
+</div>

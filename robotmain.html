@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Robot Dance Challenge 2020</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+
+
+  <body ng-app="myApp" ng-controller="mainContr">
+    <script type="text/javascript" src="js/module.js"></script>
+    <script type="text/javascript" src="js/competition_controller.js"></script>
+    <script type="text/javascript" src="js/leaderboard_controller.js"></script>
+    <script type="text/javascript" src="js/main_controller.js"></script>
+    <ul style="background-color:green;">
+      <li><a href="#!home" ng-click="setTab('home')" ng-class="getActive('home')">Home</a></li>
+      <li><a href="#!competitions" ng-click="setTab('competitions')" ng-class="getActive('competitions')">Manage Competitions</a></li>
+      <li><a href="#!leaderboard" ng-click="setTab('leaderboard')" ng-class="getActive('leaderboard')">Leaderboard</a></li>
+    </ul>
+    <div ng-view style="margin-left:17%;padding:10px 35px;height:100%;"></div>
+  </body>
+</html>

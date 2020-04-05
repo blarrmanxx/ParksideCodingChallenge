@@ -1,0 +1,65 @@
+body {
+  margin: 0px;
+  background-color: lightgrey;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 18%;
+  background-color: #f1f1f1;
+  height: 100%;
+  position: fixed;
+  overflow: auto;
+}
+
+li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+li a.active {
+  background-color: #555;
+  color: white;
+}
+
+li a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+
+td.competitions {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+div.competitions {
+  padding-right: 40px;
+  height: 300px;
+  overflow: auto;
+  background-color: lightgrey;
+  width: 100%;
+  border: 10px solid green;
+  padding: 10px;
+}
+
+div.newCompetition {
+  background-color: lightgrey;
+  width: 500px;
+  border: 10px solid green;
+  padding: 10px;
+
+}
+
+td.currCompetition {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.currCompetition {
+
+}
